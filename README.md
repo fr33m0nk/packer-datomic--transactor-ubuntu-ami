@@ -18,3 +18,6 @@
 | `datadog_site`             | Datadog site to be used for emitting metrics to. [Reference](https://us3.datadoghq.com/account/settings?_gl=1*j2n0rx*_ga*MTg4MDE0MjQyMy4xNjQ3MzM3MTg1*_ga_KN80RDFSQK*MTY0NzUxMTg3Ny40LjEuMTY0NzUxMTg5Mi4w#agent/ubuntu)   | `string`   | `""`                           |
 
 ### Sample [values.pkrvars.hcl](./ami_build.values.pkrvars.hcl) for reference
+
+## License
+##### Copyright © 2022 Prashant Sinha Distributed under the Eclipse Public License version 1.0.
