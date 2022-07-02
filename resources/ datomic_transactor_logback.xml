@@ -1,0 +1,102 @@
+<configuration>
+
+    <!-- prevent per-message overhead for jul logging calls, e.g. Hornet -->
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <appender name="MAIN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${DATOMIC_LOG_DIR:-log}/transactor.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${DATOMIC_LOG_DIR:-log}/transactor.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <logger name="datomic.cast2slf4j" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.kv-cluster" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.transaction" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.log" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.peer" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.connector" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.garbage" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.index" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.update" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.ddb-values" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.log-gc" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.logrotate" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.domain" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.memcached" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.slf4j.bridge" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.transactor-ext" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.eclipse.jetty.util.log" level="${LOG_LEVEL:-INFO}"/>
+
+    <!-- these namespsaces create a ton of log noise -->
+    <logger name="datomic.process-monitor" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.transactor" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.lifecycle" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="datomic.lifecycle-ext" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.activemq.audit.resource" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.activemq.audit.message" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.activemq.audit.base" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.activemq.audit" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="httpclient" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.commons.httpclient" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.http" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.jets3t" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="com.amazonaws" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="com.amazonaws.request" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="sun.rmi" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="net.spy.memcached" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="com.couchbase.client" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="com.ning.http.client.providers.netty" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.eclipse.jetty" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.hornetq.core.client.impl" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="org.apache.tomcat.jdbc.pool" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="net.spy.memcached.ConfigurationPoller" level="${LOG_LEVEL:-INFO}"/>
+
+    <logger name="net.spy.memcached.MemcachedConnection" level="${LOG_LEVEL:-INFO}"/>
+
+    <root level="${LOG_LEVEL:-INFO}">
+        <appender-ref ref="MAIN"/>
+    </root>
+</configuration>
