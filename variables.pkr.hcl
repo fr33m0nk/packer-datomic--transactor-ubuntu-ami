@@ -50,7 +50,7 @@ variable "datomic_version" {
 }
 
 variable "enable_datadog" {
-  description = "Datomic version to download and setup"
+  description = "Install and enable Datadog if true"
   type        = bool
   default     = false
 }
@@ -68,7 +68,7 @@ variable "datadog_api_key" {
 }
 
 variable "datadog_site" {
-  description = "Datadog site to be used for emitting metrics to. Reference: https://us3.datadoghq.com/account/settings?_gl=1*j2n0rx*_ga*MTg4MDE0MjQyMy4xNjQ3MzM3MTg1*_ga_KN80RDFSQK*MTY0NzUxMTg3Ny40LjEuMTY0NzUxMTg5Mi4w#agent/ubuntu"
   type        = string
+  description = "Datadog site to be used for emitting metrics to. Reference: https://us3.datadoghq.com/account/settings?_gl=1*j2n0rx*_ga*MTg4MDE0MjQyMy4xNjQ3MzM3MTg1*_ga_KN80RDFSQK*MTY0NzUxMTg3Ny40LjEuMTY0NzUxMTg5Mi4w#agent/ubuntu"
   default     = ""
 }
