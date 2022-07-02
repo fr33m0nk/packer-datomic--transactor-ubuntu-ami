@@ -72,3 +72,15 @@ variable "datadog_site" {
   description = "Datadog site to be used for emitting metrics to. Reference: https://us3.datadoghq.com/account/settings?_gl=1*j2n0rx*_ga*MTg4MDE0MjQyMy4xNjQ3MzM3MTg1*_ga_KN80RDFSQK*MTY0NzUxMTg3Ny40LjEuMTY0NzUxMTg5Mi4w#agent/ubuntu"
   default     = ""
 }
+
+variable "datomic_custom_metric_callback_library_url" {
+  type        = string
+  description = "Custom metric callback library download URL e.g. https://repo.clojars.org/net/clojars/fr33m0nk/datomic-datadog-reporter/1.1.5/datomic-datadog-reporter-1.1.5.jar"
+  default     = null
+}
+
+variable "datomic_logstash_encoder_library_url" {
+  type        = string
+  description = "Logstash encode library download URL e.g. https://repo1.maven.org/maven2/net/logstash/logback/logstash-logback-encoder/7.0.1/logstash-logback-encoder-7.0.1.jar"
+  default     = "https://repo1.maven.org/maven2/net/logstash/logback/logstash-logback-encoder/7.0.1/logstash-logback-encoder-7.0.1.jar"
+}

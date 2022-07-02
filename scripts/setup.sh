@@ -58,8 +58,18 @@ cd /tmp/setup_artifacts/datomic || return
 echo_helper "Downloading Datomic distribution with version $DATOMIC_VERSION"
 wget --http-user="$DATOMIC_USER" --http-password="$DATOMIC_PASSWORD" "https://my.datomic.com/repo/com/datomic/datomic-pro/$DATOMIC_VERSION/datomic-pro-$DATOMIC_VERSION.zip" -O "datomic-pro-$DATOMIC_VERSION.zip"
 unzip "datomic-pro-$DATOMIC_VERSION.zip"
-curl https://repo.clojars.org/net/clojars/fr33m0nk/datomic-datadog-reporter/1.1.5/datomic-datadog-reporter-1.1.5.jar -o datomic-pro-"$DATOMIC_VERSION"/lib/datomic-datadog-reporter-1.1.4.jar
-curl https://repo1.maven.org/maven2/net/logstash/logback/logstash-logback-encoder/7.0.1/logstash-logback-encoder-7.0.1.jar -o datomic-pro-"$DATOMIC_VERSION"/lib/logstash-logback-encoder.jar
+
+# Download custom_metric_callback_library in "$DATOMIC_VERSION"/lib/
+if [ -z "$DATOMIC_CUSTOM_METRIC_CALLBACK_LIBRARY_URL" ]
+  then
+    curl "$DATOMIC_CUSTOM_METRIC_CALLBACK_LIBRARY_URL" -o datomic-pro-"$DATOMIC_VERSION"/lib/custom-datomic-metric-callback.jar
+fi
+
+# Download datomic_logstash_encoder_library in "$DATOMIC_VERSION"/lib/
+if [ -z "$DATOMIC_LOGSTASH_ENCODER_LIBRARY_URL"]
+  then
+    curl "$DATOMIC_LOGSTASH_ENCODER_LIBRARY_URL" -o datomic-pro-"$DATOMIC_VERSION"/lib/logstash-logback-encoder.jar
+fi
 
 echo_helper "Moving Datomic distribution to /opt/datomic_pro"
 sudo mv datomic-pro-"$DATOMIC_VERSION" /opt/datomic_pro

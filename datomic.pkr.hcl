@@ -10,7 +10,9 @@ locals {
     "ENABLE_DATADOG=${var.enable_datadog}",
     "DD_AGENT_MAJOR_VERSION=${var.datadog_agent_version}",
     "DD_API_KEY=${var.datadog_api_key}",
-    "DD_SITE=${var.datadog_site}"
+    "DD_SITE=${var.datadog_site}",
+    "DATOMIC_CUSTOM_METRIC_CALLBACK_LIBRARY_URL=${var.datomic_custom_metric_callback_library_url}",
+    "DATOMIC_LOGSTASH_ENCODER_LIBRARY_URL=${var.datomic_logstash_encoder_library_url}"
   ]
 }
 
@@ -71,7 +73,7 @@ build {
   }
 
   provisioner "shell" {
-    environment_vars = concat(shell_provisioner_environment_vars, ["YQ_VERSION=v4.24.2/yq_linux_amd64"])
+    environment_vars = concat(local.shell_provisioner_environment_vars, ["YQ_VERSION=v4.24.2/yq_linux_amd64"])
     script           = "scripts/setup.sh"
   }
 }
@@ -87,7 +89,7 @@ build {
   }
 
   provisioner "shell" {
-    environment_vars = concat(shell_provisioner_environment_vars, ["YQ_VERSION=v4.25.2/yq_linux_arm64"])
+    environment_vars = concat(local.shell_provisioner_environment_vars, ["YQ_VERSION=v4.25.2/yq_linux_arm64"])
     script           = "scripts/setup.sh"
   }
 }
